@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Comission
+namespace Client
 {
-    public partial class Form1 : Form
+    public partial class UserManagement : Form
     {
-        public Form1()
+        public UserManagement()
         {
             InitializeComponent();
+        }
+
+        private void UserManagement_Load(object sender, EventArgs e)
+        {
+            Program.state = Program.ProgramState.Exit;
         }
     }
 }
