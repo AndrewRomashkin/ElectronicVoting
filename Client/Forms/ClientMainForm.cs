@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class UserManagement : Form
+    public partial class ClientMainForm : Form
     {
-        public UserManagement()
+        public ClientMainForm()
         {
             InitializeComponent();
         }
 
-        private void UserManagement_Load(object sender, EventArgs e)
+        private void ClientMainForm_Load(object sender, EventArgs e)
         {
-            Program.state = Program.ProgramState.Exit;
+            Program.State = Program.ProgramState.Exit;
         }
     }
 }

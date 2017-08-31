@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common.DataStructures;
 
 namespace Client
 {
     static class Program
     {
         public enum ProgramState { Login, MainWindow, UserInfo, Exit };
-        public static ProgramState state = ProgramState.Login;
+        public static ProgramState State = ProgramState.Login;
+        public static UserInfo UserInfo = null;
 
         /// <summary>
         /// Главная точка входа для приложения.
@@ -19,22 +18,24 @@ namespace Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
 
-            while (state != ProgramState.Exit)
+            while (State != ProgramState.Exit)
             {
-                switch (state)
+                Form formToShow = null;
+                switch (State)
                 {
                     case ProgramState.Login:
-                        new Login().ShowDialog();
+                        formToShow = new Login();
                         break;
                     case ProgramState.MainWindow:
-                        new ClientMainForm().ShowDialog();
+                        formToShow = new ClientMainForm();
                         break;
                     case ProgramState.UserInfo:
-                        new UserManagement().ShowDialog();
+                        formToShow = new UserManagement();
                         break;
                 }
+                State = ProgramState.Exit;
+                formToShow.ShowDialog();
             }
         }
     }
